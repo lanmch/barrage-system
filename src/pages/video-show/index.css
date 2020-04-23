@@ -1,0 +1,23 @@
+.video-show{}
+.video-zone{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.video{
+    width: 80%;
+    border: 1px solid black;
+}
+.barrage{
+    z-index: 999;
+    width: 80%;
+    height: 200px;
+}
+.input-area{
+    width: 60%;
+    display: flex;
+    margin-top: 20px;
+}
