@@ -87,7 +87,7 @@ export default class VideoShow extends Component {
             
             axios({
                 method: 'get',
-                url: 'http://127.0.0.1/writedanmu',
+                url: 'http://127.0.0.1:8081/writedanmu',
                 data: {
                     userid: 0,
                     roomid: 1,

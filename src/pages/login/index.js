@@ -36,14 +36,15 @@ export default class Login extends Component {
             } else {
                 axios({
                     method: 'post',
-                    url: 'http://127.0.0.1/regist',
+                    url: 'http://127.0.0.1:8081/regist',
                     data: {
                         username: userNum,
                         password: passWd
-                    }
+                    },
+                    withCredentials: true
                 })
                 .then(res => {
-                    if(!res.data.code) {
+                    if(!Number(res.data.code)) {
                         message.success('注册成功');
                         this.setState({
                             mode: !this.state.mode
@@ -60,14 +61,16 @@ export default class Login extends Component {
             } else {
                 axios({
                     method: 'post',
-                    url: 'http:/127.0.0.1/login',
+                    url: 'http:/127.0.0.1:8081/login',
+                   // url: 'http://rap2.taobao.org:38080/app/mock/253857/login',
                     data: {
                         username: userNum,
                         password: passWd
-                    }
+                    },
+                    withCredentials: true
                 })
                 .then(res => {
-                    if(!res.data.code) {
+                    if(!Number(res.data.code)) {
                         message.success('登陆成功');
                         this.props.history.push({ pathname:'/videolist' });
                     } else {
