@@ -2,49 +2,73 @@ import React, { Component } from 'react';
 import './index.css';
 import Barrage from 'page-construct-template_component_barrage';
 import { Input, Button, message } from 'antd';
+import axios from 'axios';
 
 export default class VideoShow extends Component {
     constructor (props) {
         super(props);
         this.state = {
             barrageInput: '',
+            speed: [1, 2],
             defaultData: [
-                {
-                    text: '开始咯～',
-                    color: 'orange',
-                    fontSize: 40
-                },
-                {
-                    text: '嘻嘻',
-                    color: 'red'
-                }
+                // {
+                //     text: '开始咯～',
+                //     color: 'orange',
+                //     fontSize: 40
+                // },
+                // {
+                //     text: '嘻嘻',
+                //     color: 'red'
+                // }
             ]
         }
     }
+    changeBarrage() {
+        console.log('123')
+        
+    }
     componentDidMount () {
-        console.log(this.props.location.state.videoIndex);
-
+        let video = document.getElementById('video');
         let i = 0;
-        setInterval(() => {
-            this.setState({
-                defaultData: [
-                    {
-                        text: `hello${i}`,
-                        color: 'orange',
-                        fontSize: 30
-                    },
-                    {
-                        text: `text${i}`,
-                        color: 'red'
-                    },
-                    {
-                        text: `张大业${i}`,
-                        color: 'green'
-                    }
-                ]
-            });
-            i++;
-        }, 3000);
+        let that = this;
+        let timeInterval;
+        //监听播放开始
+        video.addEventListener('play',function(){
+            console.log("开始播放");
+            timeInterval = setInterval(() => {
+                that.setState({
+                    defaultData: [
+                        {
+                            text: `hello${i}`,
+                            color: 'orange',
+                            fontSize: 30
+                        },
+                        {
+                            text: `text${i}`,
+                            color: 'red'
+                        },
+                        {
+                            text: `张大业${i}`,
+                            color: 'green'
+                        }
+                    ]
+                })
+                i++;
+            }, 3000);
+        });
+
+        //监听播放暂停
+        video.addEventListener('pause',function(){
+            console.log("播放暂停");
+            clearInterval(timeInterval)
+        }); 
+
+        //监听播放结束
+        video.addEventListener('ended',function(){
+            console.log("播放结束");
+        });
+
+        
         
         this.setBarrageHeight();
     }
@@ -60,18 +84,33 @@ export default class VideoShow extends Component {
             message.error('您所要发送的弹幕为空，请输入后再发送');
         } else {
             //  请求
-
-            // 执行当前发送弹幕展示
-            this.setState({
-                defaultData: [
-                    {
-                        text: barrageInput,
-                        color: 'pink',
-                        fontSize: 50
-                    }
-                ],
-                barrageInput: ''
+            
+            axios({
+                method: 'get',
+                url: 'http://127.0.0.1/writedanmu',
+                data: {
+                    userid: 0,
+                    roomid: 1,
+                    time: 123,
+                    content: barrageInput,
+                    speed: 2000,
+                    color: 'red'
+                }
             })
+            .then(res => {
+                // 执行当前发送弹幕展示
+                this.setState({
+                    defaultData: [
+                        {
+                            text: barrageInput,
+                            color: 'red',
+                            fontSize: 50
+                        }
+                    ],
+                    barrageInput: ''
+                })
+            })
+            
         }
     }
     inputChange(e) {
@@ -90,7 +129,7 @@ export default class VideoShow extends Component {
                         data={this.state.defaultData}
                         fontSize={25}
                         lineHeight={40}
-                        speed={[1, 2]}
+                        speed={this.state.speed}
                         barrageAway={100}
                         onMouseOver={({ event, stopAnimation }) => stopAnimation()}
                         onMouseOut={({ event, reStartAnimation }) => reStartAnimation()}
