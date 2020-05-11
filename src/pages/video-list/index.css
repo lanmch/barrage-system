@@ -1,17 +1,89 @@
 .video-list{
     width: 100vw;
     height: 100vh;
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap; */
+    /* padding: 60px; */
+}
+.header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    height: 70px;
+}
+.header-left{
+    display: flex;
+    align-items: center;
+}
+.logo{
+    width: 180px;
+}
+.content{
+    display: flex;
+    width: 100%;
+}
+.content-left{
+    width: 70%;
+}
+.content-right{
+    width: 30%;
+}
+.zone-title{
+    width: 100%;
+    text-align: left;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: lightskyblue;
+}
+.recommand{
+    display: flex;
     flex-wrap: wrap;
-    padding: 60px;
+    padding: 0 20px;
 }
 .video-list-item{
-    width: 30%;
-    height: 500px;
+    width: 16%;
+    height: 300px;
+}
+.text{
+    font-size: 12px;
 }
 .cover{
     width: 100%;
-    height: 300px;
+    height: 200px;
+}
+.hot-movie{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.hot-movie-item{
+    width: 30%;
+    height: 170px;
+    margin-bottom: 10px;
+}
+.common-list{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 5px 5px #888888;
+    border-radius: 8px;
+    padding: 10px;
+}
+.common-list > div{
+    display: flex;
+    align-items: center;
+}
+.common-list > div > img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.common-list > div > div{
+
 }
