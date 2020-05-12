@@ -61,8 +61,7 @@ export default class Login extends Component {
             } else {
                 axios({
                     method: 'post',
-                    url: 'http:/127.0.0.1:8081/login',
-                   // url: 'http://rap2.taobao.org:38080/app/mock/253857/login',
+                    url: 'http://127.0.0.1:8081/login',
                     data: {
                         username: userNum,
                         password: passWd
