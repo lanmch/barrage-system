@@ -106,10 +106,12 @@ export default class VideoList extends Component {
                         <img className='logo' src={require('./img/logo.jpeg')} />
                         <Menu mode="horizontal">
                             <Menu.Item>首页</Menu.Item>
-                            <Menu.Item>最新</Menu.Item>
                             <Menu.Item>电影</Menu.Item>
-                            <Menu.Item>聚集</Menu.Item>
-                            <Menu.Item>首页</Menu.Item>
+                            <Menu.Item>电视剧</Menu.Item>
+                            <Menu.Item>综艺</Menu.Item>
+                            <Menu.Item>少儿</Menu.Item>
+                            <Menu.Item>动漫</Menu.Item>
+                            <Menu.Item>纪录片</Menu.Item>
                         </Menu>
                     </div>
                     <div>
@@ -125,7 +127,7 @@ export default class VideoList extends Component {
                 </Carousel>
                 <div className='content'>
                     <div className='content-left'>
-                        <div className='zone-title'>院线热播</div>
+                        <div className='zone-title'>院线电影</div>
                         <div className="recommand">
                             
                         {
@@ -146,7 +148,7 @@ export default class VideoList extends Component {
                         }
                         </div>
 
-                        <div className='zone-title'>欧美电影</div>
+                        <div className='zone-title'>热门电视剧</div>
                         <div className="recommand">
                             
                         {
@@ -166,7 +168,7 @@ export default class VideoList extends Component {
                             })
                         }
                         </div>
-                        <div className='zone-title'>华语电影</div>
+                        <div className='zone-title'>实时综艺</div>
                         <div className="recommand">
                             
                         {
